@@ -29,30 +29,37 @@ Personal notes from the Plutus Pioneer Program (2nd cohort)
     4. Logout & relog
     5. Validate: `nix-env --version` should return `nix-env (Nix) 2.3.10` (version may be different)
 5. Build nix shell for Plutus playground:
-```
-git clone https://github.com/input-output-hk/plutus
-cd plutus
-git checkout ea0ca4e9f9821a9dbfc5255fa0f42b6f2b3887c4
-nix-build \
-  --option trusted-public-keys "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ=" \
-  --option substituters https://hydra.iohk.io \
-  -A plutus-playground.client -A plutus-playground.server
-```
+    ```
+    git clone https://github.com/input-output-hk/plutus
+    cd plutus
+    git checkout ea0ca4e9f9821a9dbfc5255fa0f42b6f2b3887c4
+    nix-build \
+      --option trusted-public-keys "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ=" \
+      --option substituters https://hydra.iohk.io \
+      -A plutus-playground.client -A plutus-playground.server
+    ```
 6. Launch Plutus Playground Server (must be inside `plutus` folder from step 5):
-```
-nix-shell
-cd plutus-playground-server
-plutus-playground-server
-```
+    ```
+    nix-shell
+    cd plutus-playground-server
+    plutus-playground-server
+    ```
 7. Launch Plutus Playground Client (must be inside `plutus` folder from step 5):
-```
-nix-shell
-cd plutus-playground-client
-rm -rf .spago
-npm run start
-``` 
+    ```
+    nix-shell
+    cd plutus-playground-client
+    rm -rf .spago
+    npm run start
+    ``` 
 8. Open browser at https://localhost:8009 (accept self signed certificate)
 9. Enjoy :)
+
+##### Unresolved problems
+1. Sometimes, the `Evaluate` button of the auction script produces an error. To fix, simply try again.
+    ```
+    ConnectionError (HttpExceptionRequest Request { host = "localhost" port = 8080 secure = False requestHeaders = [("Accept","application/json;charset=utf-8,application/json"),("Content-Type","application/json;charset=utf-8")] path = "/runghc" queryString = "" method = "POST" proxy = Nothing rawBody = False redirectCount = 10 responseTimeout = ResponseTimeoutDefault requestVersion = HTTP/1.1 } ResponseTimeout)
+    ```
+    There seems to be a timeout at exactly 30 seconds and I don't know how to increase it. 
 
 ##### Sources
 1. Nix installation: https://docs.plutus-community.com/docs/setup/Ubuntu.html
