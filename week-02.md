@@ -129,6 +129,7 @@ nix-build \
     {-# LANGUAGE TypeApplications    #-}
     {-# LANGUAGE TypeFamilies        #-}
     {-# LANGUAGE TypeOperators       #-}
+    {-# LANGUAGE RecordWildCards     #-}
 
     {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -163,7 +164,7 @@ nix-build \
     {-# INLINABLE mkValidator #-}
     -- This should validate if and only if the two Booleans in the redeemer are equal!
     mkValidator :: () -> MyRedeemer -> ScriptContext -> Bool
-    mkValidator _ (MyRedeemer f1 f2) _ = traceIfFalse "pair not equal" (f1 == f2)
+    mkValidator _ MyRedeemer {..} _ = traceIfFalse "pair not equal" (flag1 == flag2)
 
     data Typed
     instance Scripts.ValidatorTypes Typed where
