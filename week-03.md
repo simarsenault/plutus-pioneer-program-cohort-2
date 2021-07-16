@@ -18,3 +18,9 @@ nix-build \
   --option substituters https://hydra.iohk.io \
   -A plutus-playground.client -A plutus-playground.server
 ```
+
+### New in plutus-playground-server
+1. The server can now be started with `-i` argument to increase timeout of compilation/simulation
+    ```
+    plutus-playground-server -i 120s
+    ```
