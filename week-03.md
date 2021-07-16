@@ -24,3 +24,17 @@ nix-build \
     ```
     plutus-playground-server -i 120s
     ```
+
+## Useful Commands
+1. Get public key hash of wallet:
+    ```
+    import Ledger
+    import Wallet.Emulator
+    pubKeyHash (walletPubKey (Wallet 2))
+    ```
+2. Get POSIX time:
+    ```
+    import Ledger.TimeSlot
+    import Data.Default
+    slotToBeginPOSIXTime def 10
+    ```
