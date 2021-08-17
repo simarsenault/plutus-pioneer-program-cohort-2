@@ -6,6 +6,9 @@ Personal notes from the Plutus Pioneer Program (2nd cohort)
 2. [Week 02 - On-chain validation scripts](/week-02.md)
 3. [Week 03 - Script contexts, parameterized contracts](/week-03.md)
 4. [Week 04 - Monads, `Emulator`, `Contract`](/week-04.md)
+5. [Week 05 - Values, native tokens and NFTs](/week-05.md)
+6. Oracles (No homework)
+7. [Week 07 - State machines](/week-07.md)
 
 ## Cheat Sheet
 1. Get public key hash of wallet ([week 03](week-03.md#useful-commands)):
